@@ -1,10 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://cvrp2utnihhdy"]
+[gd_scene load_steps=8 format=3 uid="uid://cvrp2utnihhdy"]
 
 [ext_resource type="Texture2D" uid="uid://c5eqyvuonqoai" path="res://assets/temperary/Overworld.png" id="1_avw08"]
 [ext_resource type="PackedScene" uid="uid://bbatgl7nspoa0" path="res://player.tscn" id="2_mndck"]
 [ext_resource type="AudioStream" uid="uid://souml4m05ofa" path="res://assets/ChickenBeat_v1.ogg" id="3_283xi"]
 [ext_resource type="PackedScene" uid="uid://5dp6yyeg32m6" path="res://bad_guy/baddie.tscn" id="4_in4qt"]
-[ext_resource type="Texture2D" uid="uid://bplqdp1mutskr" path="res://ui_heart.png" id="5_7jiua"]
 [ext_resource type="Script" path="res://Life.gd" id="5_ig0b5"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qy2ta"]
@@ -3260,23 +3259,23 @@ stream = ExtResource("3_283xi")
 volume_db = -1.0
 autoplay = true
 
-[node name="CharacterBody2D" parent="." instance=ExtResource("4_in4qt")]
+[node name="BadGuy" parent="." instance=ExtResource("4_in4qt")]
 position = Vector2(112, 99)
 
-[node name="UI" type="CanvasLayer" parent="."]
-
-[node name="Life" type="Control" parent="UI"]
+[node name="Life" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("5_ig0b5")
 
-[node name="TextureProgressBar" type="TextureProgressBar" parent="UI/Life"]
+[node name="Health" type="ProgressBar" parent="Life"]
 layout_mode = 0
-offset_right = 106.0
-offset_bottom = 18.0
+offset_right = 175.0
+offset_bottom = 27.0
 max_value = 3.0
-texture_over = ExtResource("5_7jiua")
+value = 3.0
+rounded = true
+show_percentage = false
 
-[connection signal="player_life_changed" from="Player" to="UI/Life" method="_on_player_player_life_changed"]
+[connection signal="player_life_changed" from="Player" to="Life" method="_on_player_player_life_changed"]

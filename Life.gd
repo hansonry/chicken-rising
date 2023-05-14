@@ -1,11 +1,11 @@
 extends Control
 
-@onready var hearts = $Hearts as TextureRect
+@onready var hp = $Health as ProgressBar
 
-var heart_pxls=16
 # Called when the node enters the scene tree for the first time.
 
-func _on_player_player_life_changed(player_hearts :float):
-	hearts.texture.scale = heart_pxls * player_hearts
-	print("Hearts changed to " + str(player_hearts))
+func _on_player_player_life_changed(player_hearts : int):
+	if(hp == null):
+		hp = $Health
+	hp.value = player_hearts
 
