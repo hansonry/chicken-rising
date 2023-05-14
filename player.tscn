@@ -104,6 +104,7 @@ animations = [{
 }]
 
 [node name="Player" type="CharacterBody2D"]
+texture_repeat = 1
 script = ExtResource("1_t5qbh")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -118,4 +119,4 @@ shape = SubResource("CircleShape2D_5rjv6")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_str2w")
-animation = &"IdelRight"
+animation = &"WalkRight"
