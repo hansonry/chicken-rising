@@ -4,6 +4,13 @@ var last_direction: String = "Right"
 
 const SPEED = 100.0
 
+signal player_life_changed
+
+var health = 3
+
+func _ready():
+	emit_signal("player_life_changed", health)
+
 func _physics_process(delta):
 	var moving :bool = false
 	var mirror :bool = false
@@ -27,7 +34,7 @@ func _physics_process(delta):
 		else:
 			last_direction = "Up"
 	else:
-		velocity.y = move_toward(velocity.y, 0, SPEED)
+		velocity.y = move_toward(velocity.y, 0, SPEED) 
 	
 	if moving:
 		$AnimatedSprite2D.play("Walk" + last_direction)
@@ -36,3 +43,7 @@ func _physics_process(delta):
 		$AnimatedSprite2D.play("Idel" + last_direction)
 
 	move_and_slide()
+
+
+func hurt(damage):
+	emit_signal("player_life_changed",health)

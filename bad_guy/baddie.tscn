@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://5dp6yyeg32m6"]
+
+[ext_resource type="Texture2D" uid="uid://c3c2m4k5dli7b" path="res://bad_guy/baddie_temp_II.png" id="1_pb3jy"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_obcqa"]
+radius = 9.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_42g0g"]
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+collision_layer = 5
+collision_mask = 7
+
+[node name="PhysicsCollider" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+scale = Vector2(1, 0.7)
+shape = SubResource("CircleShape2D_obcqa")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_pb3jy")
+
+[node name="HitBox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+
+[node name="HitBoxCollider" type="CollisionShape2D" parent="HitBox"]
+position = Vector2(0, 1)
+scale = Vector2(0.9, 0.6)
+shape = SubResource("CircleShape2D_42g0g")
