@@ -3260,7 +3260,8 @@ volume_db = -1.0
 autoplay = true
 
 [node name="BadGuy" parent="." instance=ExtResource("4_in4qt")]
-position = Vector2(112, 99)
+position = Vector2(89, 86)
+scale = Vector2(0.95648, 1)
 
 [node name="Life" type="Control" parent="."]
 layout_mode = 3

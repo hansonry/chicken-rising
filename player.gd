@@ -44,7 +44,8 @@ func _physics_process(delta):
 		#if hurting, override move dir.
 		velocity = flinch_dir.normalized() * FLINCH_CONST * get_flinch();
 		flinch -= delta;
-		print("flinching in dir " + str(velocity))
+		if not _is_flinching():
+			$HurtBox/HurtBoxCollider.disabled = false # turn hurting back on. Not invincible anymore.
 	elif moving:
 		$AnimatedSprite2D.play("Walk" + last_direction)
 		$AnimatedSprite2D.flip_h = mirror
@@ -63,7 +64,11 @@ func hurt(damage):
 func cause_flinch(amnt : float , dir : Vector2):
 	flinch = amnt
 	flinch_dir = dir
+	$HurtBox/HurtBoxCollider.disabled = true # Invincible for a little while
 	pass
+
+func _is_flinching():
+	return flinch > 0;
 
 func get_flinch():
 	return flinch * flinch
