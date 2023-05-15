@@ -3265,14 +3265,17 @@ autoplay = true
 position = Vector2(89, 86)
 scale = Vector2(0.95648, 1)
 
-[node name="Life" type="Control" parent="."]
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+
+[node name="Life" type="Control" parent="Camera2D"]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("5_ig0b5")
 
-[node name="Health" type="ProgressBar" parent="Life"]
+[node name="Health" type="ProgressBar" parent="Camera2D/Life"]
 layout_mode = 0
 offset_right = 175.0
 offset_bottom = 27.0
@@ -3281,7 +3284,4 @@ value = 3.0
 rounded = true
 show_percentage = false
 
-[node name="Camera2D" type="Camera2D" parent="."]
-anchor_mode = 0
-
-[connection signal="player_life_changed" from="Player" to="Life" method="_on_player_player_life_changed"]
+[connection signal="player_life_changed" from="Player" to="Camera2D/Life" method="_on_player_player_life_changed"]
