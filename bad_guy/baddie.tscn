@@ -1,6 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://5dp6yyeg32m6"]
+[gd_scene load_steps=6 format=3 uid="uid://5dp6yyeg32m6"]
 
+[ext_resource type="Script" path="res://bad_guy/baddie.gd" id="1_fx7gl"]
 [ext_resource type="Texture2D" uid="uid://c3c2m4k5dli7b" path="res://bad_guy/baddie_temp_II.png" id="1_pb3jy"]
+[ext_resource type="Script" path="res://bad_guy/EnemyScouting.gd" id="2_xiuqc"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_obcqa"]
 radius = 9.0
@@ -9,6 +11,7 @@ radius = 9.0
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
 collision_layer = 4
+script = ExtResource("1_fx7gl")
 
 [node name="PhysicsCollider" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1)
@@ -26,3 +29,12 @@ collision_mask = 0
 position = Vector2(0, 1)
 scale = Vector2(0.9, 0.6)
 shape = SubResource("CircleShape2D_42g0g")
+
+[node name="Vision" type="RayCast2D" parent="."]
+script = ExtResource("2_xiuqc")
+
+[node name="ScoutingTimer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[connection signal="timeout" from="ScoutingTimer" to="." method="_on_scouting_timer_timeout"]
