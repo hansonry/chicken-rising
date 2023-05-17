@@ -13,6 +13,7 @@ var flinch_dir = Vector2.ZERO
 
 func _ready():
 	emit_signal("player_life_changed", health)
+	
 
 func _physics_process(delta):
 	var moving :bool = false

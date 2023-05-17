@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bbatgl7nspoa0" path="res://player.tscn" id="2_mndck"]
 [ext_resource type="AudioStream" uid="uid://souml4m05ofa" path="res://assets/ChickenBeat_v1.ogg" id="3_283xi"]
 [ext_resource type="AudioStream" uid="uid://cowp0vomwb3t0" path="res://assets/Collection_HatchingForDummies_Eggs.ogg" id="4_ar3m5"]
-[ext_resource type="PackedScene" uid="uid://5dp6yyeg32m6" path="res://bad_guy/baddie.tscn" id="4_in4qt"]
+[ext_resource type="PackedScene" uid="uid://ceu72hb2bisr0" path="res://bad_guy/baddie.tscn" id="4_in4qt"]
 [ext_resource type="Script" path="res://Life.gd" id="5_ig0b5"]
 [ext_resource type="AudioStream" uid="uid://bytb7uxvoryep" path="res://assets/Collection_HatchingForDummies_Heater.ogg" id="5_utovd"]
 [ext_resource type="AudioStream" uid="uid://bytf75od2bf6" path="res://assets/Collection_IntroToElectronics_Motor.ogg" id="6_wbimc"]

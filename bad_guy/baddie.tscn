@@ -1,25 +1,68 @@
-[gd_scene load_steps=6 format=3 uid="uid://5dp6yyeg32m6"]
+[gd_scene load_steps=9 format=3 uid="uid://ceu72hb2bisr0"]
 
-[ext_resource type="Script" path="res://bad_guy/baddie.gd" id="1_fx7gl"]
 [ext_resource type="Texture2D" uid="uid://c3c2m4k5dli7b" path="res://bad_guy/baddie_temp_II.png" id="1_pb3jy"]
-[ext_resource type="Script" path="res://bad_guy/EnemyScouting.gd" id="2_xiuqc"]
+[ext_resource type="Script" path="res://bad_guy/Baddie.gd" id="1_rf3bw"]
+[ext_resource type="Texture2D" uid="uid://vw0lac60xvtf" path="res://bad_guy/baddie_temp_II_front.png" id="3_1m32x"]
+[ext_resource type="Script" path="res://bad_guy/ScoutingVision.gd" id="4_e6hq5"]
+[ext_resource type="Texture2D" uid="uid://cxumyf6fsfjvy" path="res://bad_guy/baddie_temp_II_back.png" id="5_fhayv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_obcqa"]
 radius = 9.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_42g0g"]
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_6v3v4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_1m32x")
+}],
+"loop": true,
+"name": &"Down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_pb3jy")
+}],
+"loop": true,
+"name": &"Right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_fhayv")
+}],
+"loop": true,
+"name": &"Up",
+"speed": 5.0
+}]
+
 [node name="CharacterBody2D" type="CharacterBody2D"]
 collision_layer = 4
-script = ExtResource("1_fx7gl")
+script = ExtResource("1_rf3bw")
+
+[node name="AlertLabel" type="Label" parent="."]
+visible = false
+offset_left = -2.0
+offset_top = -27.0
+offset_right = 21.0
+offset_bottom = -1.0
+text = "!"
+
+[node name="VisionRaycast" type="RayCast2D" parent="."]
+collision_mask = 2
+script = ExtResource("4_e6hq5")
+fov_in_degrees = 120.0
+
+[node name="PatrolTimer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
 
 [node name="PhysicsCollider" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1)
 scale = Vector2(1, 0.7)
 shape = SubResource("CircleShape2D_obcqa")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_pb3jy")
 
 [node name="HitBox" type="Area2D" parent="."]
 collision_layer = 4
@@ -30,11 +73,9 @@ position = Vector2(0, 1)
 scale = Vector2(0.9, 0.6)
 shape = SubResource("CircleShape2D_42g0g")
 
-[node name="Vision" type="RayCast2D" parent="."]
-script = ExtResource("2_xiuqc")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_6v3v4")
+animation = &"Down"
 
-[node name="ScoutingTimer" type="Timer" parent="."]
-wait_time = 3.0
-autostart = true
-
-[connection signal="timeout" from="ScoutingTimer" to="." method="_on_scouting_timer_timeout"]
+[connection signal="scout_alert" from="VisionRaycast" to="." method="_on_vision_raycast_scout_alert"]
+[connection signal="timeout" from="PatrolTimer" to="." method="_on_scouting_timer_timeout"]
