@@ -2,10 +2,9 @@ extends RayCast2D
 class_name ScoutingVision
 
 
-@onready var parent = get_parent() as Baddie
+@onready var parent = get_parent() as Bad_Guy
 @onready var DEBUG := parent.DEBUG as bool
 
-@onready var alertLabel := get_parent().find_child("AlertLabel") as Label
 signal scout_alert
 
 var base_angle = 0.0 as float
@@ -31,10 +30,6 @@ func _process(delta):
 func _physics_process(delta):
 	if is_colliding():
 		scout_alert.emit(get_collision_point())
-		if DEBUG:
-			alertLabel.visible = true
-	elif DEBUG:
-		alertLabel.visible = false
 	_move_player_scanner(delta)
 
 

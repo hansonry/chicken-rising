@@ -51,11 +51,13 @@ offset_bottom = -1.0
 text = "!"
 
 [node name="VisionRaycast" type="RayCast2D" parent="."]
+editor_description = "Used for the bad guy's vision. Scans back and forth in the direction it's facing."
 collision_mask = 2
 script = ExtResource("4_e6hq5")
 fov_in_degrees = 120.0
 
 [node name="PatrolTimer" type="Timer" parent="."]
+editor_description = "Periodically sends the bad guy to a random location"
 wait_time = 3.0
 autostart = true
 
@@ -65,6 +67,8 @@ scale = Vector2(1, 0.7)
 shape = SubResource("CircleShape2D_obcqa")
 
 [node name="HitBox" type="Area2D" parent="."]
+editor_description = "Used to detect collisions with player  \"hurt boxes\".
+Causes damage to player on collision."
 collision_layer = 4
 collision_mask = 0
 

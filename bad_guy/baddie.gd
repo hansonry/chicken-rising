@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-class_name Baddie
+class_name Bad_Guy
 
 const WALK_SPEED = 10.0
 const RUN_SPEED = 30.0
@@ -118,19 +118,29 @@ func _calculate_last_direction(dir: Vector2):
 
 func _on_scouting_timer_timeout():
 	# Get a random point within PATROL_DISTANCE from the PATROL_ORIGIN.
-	SPEED = WALK_SPEED
 	next_patrol_location = PATROL_ORIGIN + ( Vector2.from_angle(rand.randf_range(-PI,PI)) * PATROL_DISTANCE * rand.randf());
-	vision_scanner.scan_lazy()
+	_set_lazy()
 	pass
 
 
 func _on_vision_raycast_scout_alert(player_loc:Vector2):
 	#If the enemy sees the player, chase the player!!!
-	SPEED=RUN_SPEED
 	next_patrol_location = player_loc
 	$PatrolTimer.start() # reset the timer. we don't want our bad guy to wander off randomly while chasing us!d
-	vision_scanner.scan_alert()
+	_set_alert()
 	pass
+
+func _set_alert():
+	SPEED=RUN_SPEED
+	vision_scanner.scan_alert()
+	$AlertLabel.visible = true
+
+
+func _set_lazy():
+	SPEED = WALK_SPEED
+	vision_scanner.scan_lazy()
+	$AlertLabel.visible = false
+
 
 func _draw():
 	if DEBUG:
