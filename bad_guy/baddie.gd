@@ -47,7 +47,7 @@ func _physics_process(delta):
 
 		
 	_calculate_last_direction(velocity)
-	_pick_anim(last_direction)
+	_pick_anim(last_direction , moving)
 	_pick_scan_angle(last_direction)
 	
 	move_and_slide()
@@ -59,18 +59,16 @@ func _am_I_close_enough():
 	return global_position.distance_squared_to(next_patrol_location) < 5;
 
 
-func _pick_anim( direction : String):
+func _pick_anim( direction : String , moving : bool):
+	if(moving):
+		sprite.play("run")
+	else:
+		sprite.play("idle")
 	match direction:
-		"Up":
-			sprite.play("Up")
-		"Down":
-			sprite.play("Down")
-		"Right":
-			sprite.play("Right")
-			sprite.flip_h = false;
 		"Left":
-			sprite.play("Right")
 			sprite.flip_h = true;
+		"Right":
+			sprite.flip_h = false;
 
 func _pick_scan_angle(direction: String):
 	match direction:
