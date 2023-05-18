@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemComponent" load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://items/components/item_component.gd" id="1_3ukuq"]
+[ext_resource type="AudioStream" uid="uid://bytf75od2bf6" path="res://assets/Collection_IntroToElectronics_Motor.ogg" id="2_2balh"]
+[ext_resource type="Texture2D" uid="uid://c5eqyvuonqoai" path="res://assets/temperary/Overworld.png" id="3_ihbjr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_77rad"]
+atlas = ExtResource("3_ihbjr")
+region = Rect2(448, 320, 16, 24)
+
+[resource]
+script = ExtResource("1_3ukuq")
+identified = false
+name = "Motor"
+texture = SubResource("AtlasTexture_77rad")
+sound_on_pickup = ExtResource("2_2balh")

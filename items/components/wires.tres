@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemComponent" load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://items/components/item_component.gd" id="1_o1dgw"]
+[ext_resource type="AudioStream" uid="uid://bsbdnfegud2p" path="res://assets/Collection__IntroToElectronics_Wires.ogg" id="2_yhwb3"]
+[ext_resource type="Texture2D" uid="uid://c5eqyvuonqoai" path="res://assets/temperary/Overworld.png" id="3_6dolj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_57mfu"]
+atlas = ExtResource("3_6dolj")
+region = Rect2(432, 320, 16, 24)
+
+[resource]
+script = ExtResource("1_o1dgw")
+identified = false
+name = "Wires"
+texture = SubResource("AtlasTexture_57mfu")
+sound_on_pickup = ExtResource("2_yhwb3")
