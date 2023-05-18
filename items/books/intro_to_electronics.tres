@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemBook" load_steps=4 format=3 uid="uid://dwk4cvdo0phch"]
+
+[ext_resource type="Script" path="res://items/books/item_book.gd" id="1_1wj6b"]
+[ext_resource type="Texture2D" uid="uid://c5eqyvuonqoai" path="res://assets/temperary/Overworld.png" id="2_8130s"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_31rhc"]
+atlas = ExtResource("2_8130s")
+region = Rect2(368, 328, 16, 16)
+
+[resource]
+script = ExtResource("1_1wj6b")
+name = "Intro to Electronics"
+texture = SubResource("AtlasTexture_31rhc")

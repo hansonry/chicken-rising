@@ -35,7 +35,6 @@ func _physics_process(delta):
 		command = Vector2.ZERO
 		
 	velocity = command * SPEED
-	print(str(command))
 	if command.x:
 		moving = true
 	else:

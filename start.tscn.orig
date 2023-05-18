@@ -1,4 +1,8 @@
-[gd_scene load_steps=17 format=3 uid="uid://cvrp2utnihhdy"]
+<<<<<<< HEAD
+[gd_scene load_steps=19 format=3 uid="uid://cvrp2utnihhdy"]
+=======
+[gd_scene load_steps=14 format=3 uid="uid://nm83iehbhh0r"]
+>>>>>>> master
 
 [ext_resource type="Texture2D" uid="uid://c5eqyvuonqoai" path="res://assets/temperary/Overworld.png" id="1_avw08"]
 [ext_resource type="Script" path="res://start.gd" id="1_nk06j"]
@@ -6,7 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://souml4m05ofa" path="res://assets/ChickenBeat_v1.ogg" id="3_283xi"]
 [ext_resource type="Resource" uid="uid://ulfmu61pgmf6" path="res://items/components/circuit_board.tres" id="4_5uhjo"]
 [ext_resource type="PackedScene" uid="uid://ceu72hb2bisr0" path="res://bad_guy/baddie.tscn" id="4_in4qt"]
-[ext_resource type="Resource" uid="uid://dwk4cvdo0phch" path="res://items/books/intro_to_electronics.tres" id="5_2xm0q"]
+[ext_resource type="Resource" path="res://items/books/intro_to_electronics.tres" id="5_2xm0q"]
 [ext_resource type="Script" path="res://Life.gd" id="5_ig0b5"]
 [ext_resource type="Resource" uid="uid://b1d56m8bs38c7" path="res://items/components/wires.tres" id="5_mkx3l"]
 [ext_resource type="Resource" uid="uid://ih3srbdtg21h" path="res://items/components/motor.tres" id="6_egsmq"]
@@ -3251,12 +3255,27 @@ texture = ExtResource("1_avw08")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_qy2ta")
 
+<<<<<<< HEAD
+[sub_resource type="AtlasTexture" id="AtlasTexture_iemaf"]
+atlas = ExtResource("1_avw08")
+region = Rect2(416, 320, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_57mfu"]
+atlas = ExtResource("1_avw08")
+region = Rect2(432, 320, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_77rad"]
+atlas = ExtResource("1_avw08")
+region = Rect2(448, 320, 16, 24)
+
 [sub_resource type="Curve2D" id="Curve2D_sr576"]
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 245, -17, 0, 0, 0, 0, 328, -18, 0, 0, 0, 0, 353, 109, 0, 0, 0, 0, 264, 108, 0, 0, 0, 0, 245, -17, 0, 0, 0, 0, 264, -29)
 }
 point_count = 6
 
+=======
+>>>>>>> master
 [node name="Node2D" type="Node2D"]
 texture_filter = 1
 script = ExtResource("1_nk06j")
@@ -3267,7 +3286,6 @@ format = 2
 layer_0/tile_data = PackedInt32Array(262148, 327680, 10, 327684, 327680, 10, 393220, 327680, 10, 262149, 327680, 10, 327685, 327680, 10, 393221, 327680, 10, 262150, 327680, 10, 327686, 327680, 10, 393222, 327680, 10, 262151, 327680, 10, 393219, 327680, 10, 393223, 327680, 10, 393224, 327680, 10, 327688, 327680, 10, 327687, 327680, 10, 262147, 327680, 10, 327683, 327680, 10, 262152, 327680, 10, 196610, 327680, 14, 196611, 327680, 14, 196612, 327680, 14, 196613, 327680, 14, 196614, 327680, 14, 196615, 327680, 14, 196616, 327680, 14, 131078, 327680, 11, 131079, 327680, 11, 131080, 327680, 11, 131077, 327680, 11, 131076, 327680, 11, 131075, 327680, 11, 131074, 327680, 11, 131073, 327680, 11, 196609, 327680, 14, 262153, 262144, 14, 393225, 0, 11, 196617, 262144, 11, 131081, 65536, 9, 262146, 327680, 9, 327682, 327680, 9, 393218, 327680, 9, 393217, 327680, 9, 327681, 327680, 9, 262145, 327680, 9, 131072, 0, 9, 196608, 393216, 10, 262144, 393216, 10, 327680, 393216, 10, 393216, 393216, 10, 458760, 65536, 11, 458759, 65536, 11, 458758, 65536, 11, 458757, 65536, 11, 458756, 65536, 11, 458755, 65536, 11, 458754, 65536, 11, 458753, 65536, 11, 458761, 65536, 10, 458752, 0, 10, 393226, 65536, 11, 393227, 65536, 11, 262154, 327680, 14, 262155, 327680, 14, 327689, 327680, 10, 327690, 327680, 10, 327691, 327680, 10, 196618, 327680, 11, 196619, 327680, 11, 589824, 327680, 10, 589826, 327680, 10, 589828, 327680, 10, 589830, 327680, 10, 589832, 327680, 10, 589834, 327680, 10, 589836, 327680, 10, 589838, 327680, 10, 589840, 327680, 10, 13, 327680, 10, 131085, 327680, 10, 262157, 327680, 10, 393229, 327680, 10, 524301, 327680, 10, 655373, 327680, 10, 786445, 327680, 10, 917517, 327680, 10, 589842, 327680, 10, -393213, 327680, 10, -393214, 327680, 10, -393215, 327680, 10, -327679, 327680, 10, -262143, 327680, 10, -196607, 327680, 10, -131071, 327680, 10, -131070, 327680, 10, -65534, 327680, 10, -65533, 327680, 10, -65532, 327680, 10, -393209, 327680, 10, -327673, 327680, 10, -327672, 327680, 10, -262136, 327680, 10, -196600, 327680, 10, -131064, 327680, 10, -327669, 327680, 10, -262133, 327680, 10, -196597, 327680, 10, -262135, 327680, 10, -262134, 327680, 10, -393202, 327680, 10, -327666, 327680, 10, -262130, 327680, 10, -196594, 327680, 10, -131059, 327680, 10, -131058, 327680, 10, -131057, 327680, 10, -458739, 327680, 10, -458738, 327680, 10, -458737, 327680, 10, -393198, 327680, 10, -327662, 327680, 10, -262126, 327680, 10, -196590, 327680, 10, -131054, 327680, 10, -262125, 327680, 10, -327660, 327680, 10, -393195, 327680, 10, -196588, 327680, 10, -131051, 327680, 10)
 
 [node name="Pickups" type="Node2D" parent="."]
-metadata/_edit_lock_ = true
 
 [node name="PickupableCircuitBoard" parent="Pickups" instance=ExtResource("7_yqi8i")]
 position = Vector2(241, 75)

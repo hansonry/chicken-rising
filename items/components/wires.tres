@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemComponent" load_steps=6 format=3 uid="uid://b1d56m8bs38c7"]
+
+[ext_resource type="Resource" uid="uid://dwk4cvdo0phch" path="res://items/books/intro_to_electronics.tres" id="1_8tkuc"]
+[ext_resource type="Script" path="res://items/components/item_component.gd" id="2_820gs"]
+[ext_resource type="AudioStream" uid="uid://bsbdnfegud2p" path="res://assets/Collection__IntroToElectronics_Wires.ogg" id="3_u16oo"]
+[ext_resource type="Texture2D" uid="uid://c5eqyvuonqoai" path="res://assets/temperary/Overworld.png" id="4_k64uw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_57mfu"]
+atlas = ExtResource("4_k64uw")
+region = Rect2(432, 320, 16, 24)
+
+[resource]
+script = ExtResource("2_820gs")
+identified_by = ExtResource("1_8tkuc")
+name = "Wires"
+texture = SubResource("AtlasTexture_57mfu")
+sound_on_pickup = ExtResource("3_u16oo")

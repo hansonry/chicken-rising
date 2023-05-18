@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemComponent" load_steps=6 format=3 uid="uid://ih3srbdtg21h"]
+
+[ext_resource type="Resource" uid="uid://dwk4cvdo0phch" path="res://items/books/intro_to_electronics.tres" id="1_w4et2"]
+[ext_resource type="Script" path="res://items/components/item_component.gd" id="2_mvmgn"]
+[ext_resource type="AudioStream" uid="uid://bytf75od2bf6" path="res://assets/Collection_IntroToElectronics_Motor.ogg" id="3_qrpqw"]
+[ext_resource type="Texture2D" uid="uid://c5eqyvuonqoai" path="res://assets/temperary/Overworld.png" id="4_j7cd5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_77rad"]
+atlas = ExtResource("4_j7cd5")
+region = Rect2(448, 320, 16, 24)
+
+[resource]
+script = ExtResource("2_mvmgn")
+identified_by = ExtResource("1_w4et2")
+name = "Motor"
+texture = SubResource("AtlasTexture_77rad")
+sound_on_pickup = ExtResource("3_qrpqw")
