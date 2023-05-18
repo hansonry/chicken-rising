@@ -1,8 +1,8 @@
-[gd_scene load_steps=15 format=3 uid="uid://ceu72hb2bisr0"]
+[gd_scene load_steps=15 format=3 uid="uid://b3lr2ghlaehoi"]
 
-[ext_resource type="Script" path="res://bad_guy/baddie.gd" id="1_ccv2y"]
-[ext_resource type="Texture2D" uid="uid://bq7dj8b0pvub0" path="res://bad_guy/fox.png" id="3_yb8c7"]
-[ext_resource type="Script" path="res://bad_guy/ScoutingVision.gd" id="4_e6hq5"]
+[ext_resource type="Script" path="res://bad_guy/patroling_baddie.gd" id="1_v780l"]
+[ext_resource type="Script" path="res://bad_guy/ScoutingVision.gd" id="2_a0nmh"]
+[ext_resource type="Texture2D" uid="uid://bq7dj8b0pvub0" path="res://bad_guy/fox.png" id="3_asg06"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_obcqa"]
 radius = 9.0
@@ -10,35 +10,35 @@ radius = 9.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_42g0g"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ud0hy"]
-atlas = ExtResource("3_yb8c7")
+atlas = ExtResource("3_asg06")
 region = Rect2(1, 42, 32, 31)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nxs85"]
-atlas = ExtResource("3_yb8c7")
+atlas = ExtResource("3_asg06")
 region = Rect2(0, 10, 31, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_or0er"]
-atlas = ExtResource("3_yb8c7")
+atlas = ExtResource("3_asg06")
 region = Rect2(32, 10, 31, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vynro"]
-atlas = ExtResource("3_yb8c7")
+atlas = ExtResource("3_asg06")
 region = Rect2(64, 10, 31, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ijj2a"]
-atlas = ExtResource("3_yb8c7")
+atlas = ExtResource("3_asg06")
 region = Rect2(96, 10, 31, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4ol8c"]
-atlas = ExtResource("3_yb8c7")
+atlas = ExtResource("3_asg06")
 region = Rect2(128, 10, 31, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_x877i"]
-atlas = ExtResource("3_yb8c7")
+atlas = ExtResource("3_asg06")
 region = Rect2(160, 10, 31, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kdem4"]
-atlas = ExtResource("3_yb8c7")
+atlas = ExtResource("3_asg06")
 region = Rect2(192, 10, 31, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_6v3v4"]
@@ -78,9 +78,10 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="BadGuy" type="CharacterBody2D"]
+[node name="PatrolingBadGuy" type="CharacterBody2D"]
+editor_description = "You need to assign a PathFollow2D node to the script for this to work.. OR ELSE!"
 collision_layer = 4
-script = ExtResource("1_ccv2y")
+script = ExtResource("1_v780l")
 
 [node name="AlertLabel" type="Label" parent="."]
 visible = false
@@ -93,13 +94,8 @@ text = "!"
 [node name="VisionRaycast" type="RayCast2D" parent="."]
 editor_description = "Used for the bad guy's vision. Scans back and forth in the direction it's facing."
 collision_mask = 2
-script = ExtResource("4_e6hq5")
+script = ExtResource("2_a0nmh")
 fov_in_degrees = 120.0
-
-[node name="PatrolTimer" type="Timer" parent="."]
-editor_description = "Periodically sends the bad guy to a random location"
-wait_time = 3.0
-autostart = true
 
 [node name="PhysicsCollider" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1)
@@ -121,5 +117,8 @@ shape = SubResource("CircleShape2D_42g0g")
 sprite_frames = SubResource("SpriteFrames_6v3v4")
 animation = &"idle"
 
+[node name="AlertnessTimer" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="scout_alert" from="VisionRaycast" to="." method="_on_vision_raycast_scout_alert"]
-[connection signal="timeout" from="PatrolTimer" to="." method="_on_scouting_timer_timeout"]
+[connection signal="timeout" from="AlertnessTimer" to="." method="_on_alertness_timer_timeout"]

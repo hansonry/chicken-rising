@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cvrp2utnihhdy"]
+[gd_scene load_steps=19 format=3 uid="uid://cvrp2utnihhdy"]
 
 [ext_resource type="Texture2D" uid="uid://c5eqyvuonqoai" path="res://assets/temperary/Overworld.png" id="1_avw08"]
 [ext_resource type="Script" path="res://start.gd" id="1_nk06j"]
@@ -10,6 +10,8 @@
 [ext_resource type="AudioStream" uid="uid://bytb7uxvoryep" path="res://assets/Collection_HatchingForDummies_Heater.ogg" id="5_utovd"]
 [ext_resource type="AudioStream" uid="uid://bytf75od2bf6" path="res://assets/Collection_IntroToElectronics_Motor.ogg" id="6_wbimc"]
 [ext_resource type="PackedScene" uid="uid://dtsngtdm0uj6" path="res://pickupable.tscn" id="7_yqi8i"]
+[ext_resource type="PackedScene" uid="uid://b3lr2ghlaehoi" path="res://bad_guy/patroling_baddie.tscn" id="11_pfsdc"]
+[ext_resource type="Texture2D" uid="uid://j4fa2inl4i66" path="res://assets/temperary/debug_beacon.png" id="12_flte3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qy2ta"]
 texture = ExtResource("1_avw08")
@@ -3260,6 +3262,12 @@ region = Rect2(432, 320, 16, 24)
 atlas = ExtResource("1_avw08")
 region = Rect2(448, 320, 16, 24)
 
+[sub_resource type="Curve2D" id="Curve2D_sr576"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 245, -17, 0, 0, 0, 0, 328, -18, 0, 0, 0, 0, 353, 109, 0, 0, 0, 0, 264, 108, 0, 0, 0, 0, 245, -17, 0, 0, 0, 0, 264, -29)
+}
+point_count = 6
+
 [node name="Node2D" type="Node2D"]
 texture_filter = 1
 script = ExtResource("1_nk06j")
@@ -3339,5 +3347,21 @@ max_value = 3.0
 value = 3.0
 rounded = true
 show_percentage = false
+
+[node name="PatrolingBadGuy_1" parent="." node_paths=PackedStringArray("path") instance=ExtResource("11_pfsdc")]
+position = Vector2(211, 41)
+path = NodePath("../Patrol_1/PathFollow2D")
+
+[node name="Patrol_1" type="Path2D" parent="."]
+position = Vector2(-42, 68)
+curve = SubResource("Curve2D_sr576")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Patrol_1"]
+position = Vector2(245, -17)
+rotation = -0.0120476
+
+[node name="DEBUG_MARKER" type="Sprite2D" parent="Patrol_1/PathFollow2D"]
+visible = false
+texture = ExtResource("12_flte3")
 
 [connection signal="player_life_changed" from="Player" to="Camera2D/Life" method="_on_player_player_life_changed"]

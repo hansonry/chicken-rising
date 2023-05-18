@@ -9,6 +9,7 @@ var SPEED = WALK_SPEED
 @export var DEBUG: bool = false
 @onready var sprite = $AnimatedSprite2D as AnimatedSprite2D
 @onready var vision_scanner = $VisionRaycast as ScoutingVision
+var alert = false;
 
 var last_direction = "Right"
 #patrol variables
@@ -33,15 +34,14 @@ func _physics_process(delta):
 	if _am_I_close_enough(): 
 		command = Vector2.ZERO
 		
-	command = command.normalized()
+	velocity = command * SPEED
+	print(str(command))
 	if command.x:
 		moving = true
-		velocity.x = command.x * SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 	if command.y:
 		moving = true
-		velocity.y = command.y * SPEED
 	else:
 		velocity.y = move_toward(velocity.y, 0, SPEED) 
 
@@ -49,7 +49,7 @@ func _physics_process(delta):
 	_calculate_last_direction(velocity)
 	_pick_anim(last_direction , moving)
 	_pick_scan_angle(last_direction)
-	
+
 	move_and_slide()
 	
 	#DEBUG
@@ -82,14 +82,15 @@ func _pick_scan_angle(direction: String):
 			vision_scanner.set_scan_angle(PI/2)
 
 func _DEBUG_dir_keypress():
-	if Input.is_key_pressed(KEY_J):
-		next_patrol_location = global_position + (Vector2.LEFT * 30)
-	if Input.is_key_pressed(KEY_I):
-		next_patrol_location = global_position + (Vector2.UP * 30)
-	if Input.is_key_pressed(KEY_K):
-		next_patrol_location = global_position + (Vector2.DOWN * 30)
-	if Input.is_key_pressed(KEY_L):
-		next_patrol_location = global_position + (Vector2.RIGHT * 30)
+	if DEBUG:
+		if Input.is_key_pressed(KEY_J):
+			next_patrol_location = global_position + (Vector2.LEFT * 30)
+		if Input.is_key_pressed(KEY_I):
+			next_patrol_location = global_position + (Vector2.UP * 30)
+		if Input.is_key_pressed(KEY_K):
+			next_patrol_location = global_position + (Vector2.DOWN * 30)
+		if Input.is_key_pressed(KEY_L):
+			next_patrol_location = global_position + (Vector2.RIGHT * 30)
 		
 		
 func _calculate_last_direction(dir: Vector2):
@@ -129,17 +130,25 @@ func _on_vision_raycast_scout_alert(player_loc:Vector2):
 	pass
 
 func _set_alert():
-	SPEED=RUN_SPEED
+	SPEED=_get_run_speed()
 	vision_scanner.scan_alert()
 	$AlertLabel.visible = true
+	alert = true
 
 
 func _set_lazy():
-	SPEED = WALK_SPEED
+	SPEED = _get_walk_speed()
 	vision_scanner.scan_lazy()
 	$AlertLabel.visible = false
-
+	alert = false
 
 func _draw():
 	if DEBUG:
 		draw_line(Vector2.ZERO , Vector2.from_angle($VisionRaycast.base_angle) * 30 , Color.BLUE )
+
+
+func _get_walk_speed():
+	return WALK_SPEED
+	
+func _get_run_speed():
+	return RUN_SPEED
