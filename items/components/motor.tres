@@ -1,16 +1,18 @@
-[gd_resource type="Resource" script_class="ItemComponent" load_steps=5 format=3]
+[gd_resource type="Resource" script_class="ItemComponent" load_steps=6 format=3 uid="uid://ih3srbdtg21h"]
 
-[ext_resource type="Script" path="res://items/components/item_component.gd" id="1_3ukuq"]
-[ext_resource type="AudioStream" uid="uid://bytf75od2bf6" path="res://assets/Collection_IntroToElectronics_Motor.ogg" id="2_2balh"]
-[ext_resource type="Texture2D" uid="uid://c5eqyvuonqoai" path="res://assets/temperary/Overworld.png" id="3_ihbjr"]
+[ext_resource type="Resource" path="res://items/books/intro_to_electronics.tres" id="1_w4et2"]
+[ext_resource type="Script" path="res://items/components/item_component.gd" id="2_mvmgn"]
+[ext_resource type="AudioStream" uid="uid://bytf75od2bf6" path="res://assets/Collection_IntroToElectronics_Motor.ogg" id="3_qrpqw"]
+[ext_resource type="Texture2D" uid="uid://c5eqyvuonqoai" path="res://assets/temperary/Overworld.png" id="4_j7cd5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_77rad"]
-atlas = ExtResource("3_ihbjr")
+atlas = ExtResource("4_j7cd5")
 region = Rect2(448, 320, 16, 24)
 
 [resource]
-script = ExtResource("1_3ukuq")
+script = ExtResource("2_mvmgn")
 identified = false
+identified_by = ExtResource("1_w4et2")
 name = "Motor"
 texture = SubResource("AtlasTexture_77rad")
-sound_on_pickup = ExtResource("2_2balh")
+sound_on_pickup = ExtResource("3_qrpqw")

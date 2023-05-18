@@ -37,7 +37,7 @@ func _pick_up():
 	if not picked_up:
 		_play_pickup_sound()
 		hide()
-		Inventory.add_item(ItemComponent.new("Circuit board"))
+		Inventory.add_item(item)
 		picked_up = true
 	
 	
