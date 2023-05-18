@@ -82,6 +82,7 @@ animations = [{
 editor_description = "You need to assign a PathFollow2D node to the script for this to work.. OR ELSE!"
 collision_layer = 4
 script = ExtResource("1_v780l")
+DEBUG = true
 
 [node name="AlertLabel" type="Label" parent="."]
 visible = false
@@ -93,9 +94,12 @@ text = "!"
 
 [node name="VisionRaycast" type="RayCast2D" parent="."]
 editor_description = "Used for the bad guy's vision. Scans back and forth in the direction it's facing."
+target_position = Vector2(0, 100)
 collision_mask = 2
 script = ExtResource("2_a0nmh")
-fov_in_degrees = 120.0
+LAZY_SCAN_SPEED = 6.283
+ALERT_SCAN_SPEED = 12.566
+fov_in_degrees = 200.0
 
 [node name="PhysicsCollider" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1)

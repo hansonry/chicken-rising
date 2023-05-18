@@ -2,8 +2,8 @@ extends CharacterBody2D
 
 class_name Bad_Guy
 
-const WALK_SPEED = 10.0
-const RUN_SPEED = 30.0
+@export var WALK_SPEED = 20.0
+@export var RUN_SPEED = 45.0
 var SPEED = WALK_SPEED
 #NOTE: Scouting depends on last_direction
 @export var DEBUG: bool = false

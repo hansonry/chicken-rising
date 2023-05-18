@@ -40,9 +40,3 @@ func _on_alertness_timer_timeout():
 	_set_lazy()
 	pass # Replace with function body.
 
-#Patroling baddies are just a little faster in everything they do
-func _get_walk_speed():
-	return WALK_SPEED * 1.5
-	
-func _get_run_speed():
-	return RUN_SPEED * 1.25

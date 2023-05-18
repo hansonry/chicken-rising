@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ItemEquipment" load_steps=5 format=3 uid="uid://nrtxebbx51g"]
+
+[ext_resource type="Script" path="res://items/stealth_box/item_equipment.gd" id="1_ndqhw"]
+[ext_resource type="AudioStream" uid="uid://bytf75od2bf6" path="res://assets/Collection_IntroToElectronics_Motor.ogg" id="2_35drr"]
+[ext_resource type="Texture2D" uid="uid://5vg02kqqtsqp" path="res://assets/Carboard_Box.png" id="3_7fe77"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t3w2j"]
+atlas = ExtResource("3_7fe77")
+region = Rect2(15.8433, 15.6781, 16.5398, 16.9751)
+
+[resource]
+script = ExtResource("1_ndqhw")
+name = "box"
+texture = SubResource("AtlasTexture_t3w2j")
+sound_on_pickup = ExtResource("2_35drr")

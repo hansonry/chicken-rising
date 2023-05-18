@@ -9,8 +9,8 @@ signal scout_alert
 
 var base_angle = 0.0 as float
 var fov_offset_angle = 0.0 as float
-const LAZY_SCAN_SPEED = PI
-const ALERT_SCAN_SPEED = 4*PI
+@export var LAZY_SCAN_SPEED = PI
+@export var ALERT_SCAN_SPEED = 4*PI
 var scan_speed_rad_per_sec = LAZY_SCAN_SPEED # 90 degrees
 
 @export var fov_in_degrees : float = 60;

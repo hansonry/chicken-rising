@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cvrp2utnihhdy"]
+[gd_scene load_steps=18 format=3 uid="uid://cvrp2utnihhdy"]
 
 [ext_resource type="Texture2D" uid="uid://c5eqyvuonqoai" path="res://assets/temperary/Overworld.png" id="1_avw08"]
 [ext_resource type="Script" path="res://start.gd" id="1_nk06j"]
@@ -11,6 +11,7 @@
 [ext_resource type="Resource" uid="uid://b1d56m8bs38c7" path="res://items/components/wires.tres" id="5_mkx3l"]
 [ext_resource type="Resource" uid="uid://ih3srbdtg21h" path="res://items/components/motor.tres" id="6_egsmq"]
 [ext_resource type="PackedScene" uid="uid://dtsngtdm0uj6" path="res://pickupable.tscn" id="7_yqi8i"]
+[ext_resource type="Resource" uid="uid://nrtxebbx51g" path="res://items/stealth_box/stealth_box.tres" id="8_2t3ps"]
 [ext_resource type="PackedScene" uid="uid://b3lr2ghlaehoi" path="res://bad_guy/patroling_baddie.tscn" id="11_pfsdc"]
 [ext_resource type="Texture2D" uid="uid://j4fa2inl4i66" path="res://assets/temperary/debug_beacon.png" id="12_flte3"]
 
@@ -3285,6 +3286,10 @@ item = ExtResource("5_mkx3l")
 position = Vector2(247, 149)
 item = ExtResource("6_egsmq")
 
+[node name="PickupableBox" parent="Pickups" instance=ExtResource("7_yqi8i")]
+position = Vector2(321, 103)
+item = ExtResource("8_2t3ps")
+
 [node name="Player" parent="." instance=ExtResource("2_mndck")]
 position = Vector2(39, 79)
 
@@ -3293,10 +3298,6 @@ stream = ExtResource("3_283xi")
 volume_db = -1.0
 autoplay = true
 bus = &"BG Music"
-
-[node name="BadGuy" parent="." instance=ExtResource("4_in4qt")]
-position = Vector2(89, 86)
-scale = Vector2(0.95648, 1)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
@@ -3317,19 +3318,26 @@ value = 3.0
 rounded = true
 show_percentage = false
 
-[node name="PatrolingBadGuy_1" parent="." node_paths=PackedStringArray("path") instance=ExtResource("11_pfsdc")]
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="BadGuy" parent="Enemies" instance=ExtResource("4_in4qt")]
+position = Vector2(89, 86)
+scale = Vector2(0.95648, 1)
+
+[node name="PatrolingBadGuy_1" parent="Enemies" node_paths=PackedStringArray("path") instance=ExtResource("11_pfsdc")]
 position = Vector2(211, 41)
 path = NodePath("../Patrol_1/PathFollow2D")
+DEBUG = false
 
-[node name="Patrol_1" type="Path2D" parent="."]
+[node name="Patrol_1" type="Path2D" parent="Enemies"]
 position = Vector2(-42, 68)
 curve = SubResource("Curve2D_sr576")
 
-[node name="PathFollow2D" type="PathFollow2D" parent="Patrol_1"]
+[node name="PathFollow2D" type="PathFollow2D" parent="Enemies/Patrol_1"]
 position = Vector2(245, -17)
 rotation = -0.0120476
 
-[node name="DEBUG_MARKER" type="Sprite2D" parent="Patrol_1/PathFollow2D"]
+[node name="DEBUG_MARKER" type="Sprite2D" parent="Enemies/Patrol_1/PathFollow2D"]
 visible = false
 texture = ExtResource("12_flte3")
 
