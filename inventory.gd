@@ -8,16 +8,18 @@ func _ready():
 
 func _component_identified(component: ItemComponent, book: ItemBook):
 	print("Identifed! " + component.name)
+	component.identified = true
 	
 func _identify_components_using_book(book: ItemBook):
 	for item in items:
-		if item is ItemComponent and item.identified_by == book:
+		if item is ItemComponent and not item.identified and item.identified_by == book :
 			_component_identified(item, book)
 
 func _identify_component(component: ItemComponent):
-	for item in items:
-		if item is ItemBook and component.identified_by == item:
-			_component_identified(component, item)
+	if not component.identified:
+		for item in items:
+			if item is ItemBook and component.identified_by == item:
+				_component_identified(component, item)
 
 func add_item(item: Item):
 	items.append(item)
