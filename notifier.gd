@@ -39,7 +39,6 @@ func _process(delta):
 
 
 func _on_animation_player_animation_finished(anim_name):
-	print("Animation Done")
 	_current_notification = null
 	_mover.visible = false
 	_check_for_next_notification()
