@@ -11,13 +11,14 @@ var base_angle = 0.0 as float
 var fov_offset_angle = 0.0 as float
 @export var LAZY_SCAN_SPEED = PI
 @export var ALERT_SCAN_SPEED = 4*PI
-var scan_speed_rad_per_sec = LAZY_SCAN_SPEED # 90 degrees
+@onready var scan_speed_rad_per_sec = PI # PLACEHOLDER -- bc some weird process_physics bug, it needs to be set before onready
 
 @export var fov_in_degrees : float = 60;
 @onready var fov_max_in_rads = deg_to_rad(fov_in_degrees) # around 60 degress total
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	scan_speed_rad_per_sec = LAZY_SCAN_SPEED
 	pass
 
 
@@ -29,7 +30,11 @@ func _process(delta):
 
 func _physics_process(delta):
 	if is_colliding():
-		scout_alert.emit(get_collision_point())
+		var collider : CollisionObject2D = get_collider()
+		if collider is Player: 
+			scout_alert.emit(get_collision_point())
+		if collider is StealthBox:
+			print("Stealth box detected")
 	_move_player_scanner(delta)
 
 

@@ -1,5 +1,5 @@
 extends CharacterBody2D
-
+class_name Player
 var last_direction: String = "Right"
 
 const SPEED = 100.0

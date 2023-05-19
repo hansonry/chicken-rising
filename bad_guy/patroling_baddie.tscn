@@ -95,7 +95,8 @@ text = "!"
 [node name="VisionRaycast" type="RayCast2D" parent="."]
 editor_description = "Used for the bad guy's vision. Scans back and forth in the direction it's facing."
 target_position = Vector2(0, 100)
-collision_mask = 2
+collision_mask = 18
+collide_with_areas = true
 script = ExtResource("2_a0nmh")
 LAZY_SCAN_SPEED = 6.283
 ALERT_SCAN_SPEED = 12.566

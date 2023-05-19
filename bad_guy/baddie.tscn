@@ -92,7 +92,8 @@ text = "!"
 
 [node name="VisionRaycast" type="RayCast2D" parent="."]
 editor_description = "Used for the bad guy's vision. Scans back and forth in the direction it's facing."
-collision_mask = 2
+collision_mask = 18
+collide_with_areas = true
 script = ExtResource("4_e6hq5")
 fov_in_degrees = 120.0
 
