@@ -12,9 +12,9 @@ func _component_identified(component: ItemComponent, book: ItemBook):
 	print("Identifed! " + component.name)
 	component.identified = true
 	var notification := Notification.new()
-	notification.text = "Identified " + component.name
+	notification.text = "Identified " + component.unidentified_name + " as\n " + component.name
 	notification.image = component.texture
-	notification.sound = null
+	notification.sound = component.sound_on_pickup
 	notifier.add_notification(notification)
 	
 func _identify_components_using_book(book: ItemBook):
@@ -35,12 +35,20 @@ func _notify_book_got(book: ItemBook):
 	notification.sound = null
 	notifier.add_notification(notification)
 
+func _notify_component_got(component: ItemComponent):
+	var notification := Notification.new()
+	notification.text = "Got " + component.unidentified_name
+	notification.image = component.texture
+	notification.sound = null
+	notifier.add_notification(notification)
+
 func add_item(item: Item):
 	items.append(item)
 	if item is ItemBook:
 		_notify_book_got(item)
 		_identify_components_using_book(item)
 	elif item is ItemComponent:
+		_notify_component_got(item)
 		_identify_component(item)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
