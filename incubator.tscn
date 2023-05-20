@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://dmc6euwl6cqrk"]
+[gd_scene load_steps=7 format=3 uid="uid://dmc6euwl6cqrk"]
 
 [ext_resource type="Script" path="res://incubator.gd" id="1_t3kkh"]
 [ext_resource type="Texture2D" uid="uid://c5eqyvuonqoai" path="res://assets/temperary/Overworld.png" id="2_wj7qf"]
+[ext_resource type="Texture2D" uid="uid://dgqhy266gpenm" path="res://assets/incubator.png" id="3_6x4kn"]
+[ext_resource type="AudioStream" uid="uid://dwoq634t8qq3m" path="res://assets/IncubatorAssembly.ogg" id="4_e0udj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yfcmd"]
 size = Vector2(16, 16)
@@ -17,7 +19,15 @@ script = ExtResource("1_t3kkh")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_yfcmd")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Pad" type="Sprite2D" parent="."]
 texture = SubResource("AtlasTexture_cirlv")
 
+[node name="Incubator" type="Sprite2D" parent="."]
+position = Vector2(0, -40)
+texture = ExtResource("3_6x4kn")
+
+[node name="BuildingSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_e0udj")
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="finished" from="BuildingSound" to="." method="_on_building_sound_finished"]
