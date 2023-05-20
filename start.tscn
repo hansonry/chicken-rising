@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://cvrp2utnihhdy"]
+[gd_scene load_steps=26 format=3 uid="uid://cvrp2utnihhdy"]
 
 [ext_resource type="Texture2D" uid="uid://c5eqyvuonqoai" path="res://assets/temperary/Overworld.png" id="1_avw08"]
 [ext_resource type="Script" path="res://start.gd" id="1_nk06j"]
@@ -12,9 +12,16 @@
 [ext_resource type="Resource" uid="uid://ih3srbdtg21h" path="res://items/components/motor.tres" id="6_egsmq"]
 [ext_resource type="PackedScene" uid="uid://dtsngtdm0uj6" path="res://pickupable.tscn" id="7_yqi8i"]
 [ext_resource type="Resource" uid="uid://nrtxebbx51g" path="res://items/stealth_box/stealth_box.tres" id="8_2t3ps"]
-[ext_resource type="PackedScene" uid="uid://b3lr2ghlaehoi" path="res://bad_guy/patroling_baddie.tscn" id="11_pfsdc"]
+[ext_resource type="Resource" uid="uid://bgq8ijijdd0td" path="res://items/components/case.tres" id="9_rgv67"]
+[ext_resource type="Resource" uid="uid://dktimexmr63w4" path="res://items/components/door.tres" id="10_yx4nf"]
+[ext_resource type="PackedScene" path="res://bad_guy/patroling_baddie.tscn" id="11_pfsdc"]
+[ext_resource type="Resource" uid="uid://d1s5b2ooxkplf" path="res://items/components/eggs.tres" id="11_vwl1a"]
+[ext_resource type="Resource" uid="uid://co1kc36dlewc8" path="res://items/components/heater.tres" id="12_4n0f7"]
 [ext_resource type="Texture2D" uid="uid://j4fa2inl4i66" path="res://assets/temperary/debug_beacon.png" id="12_flte3"]
 [ext_resource type="PackedScene" uid="uid://cdwhhdrglh2gg" path="res://notifier.tscn" id="12_qeci5"]
+[ext_resource type="Resource" uid="uid://cqpncu5f655fq" path="res://items/components/timer.tres" id="13_g4pdu"]
+[ext_resource type="Resource" uid="uid://bxejkvlvkh3la" path="res://items/books/fasteners_and_enclosures.tres" id="14_d035u"]
+[ext_resource type="Resource" uid="uid://crd4xbyqu1i1f" path="res://items/books/hatching_for_dummies.tres" id="15_adyup"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qy2ta"]
 texture = ExtResource("1_avw08")
@@ -3275,7 +3282,7 @@ metadata/_edit_lock_ = true
 position = Vector2(241, 75)
 item = ExtResource("4_5uhjo")
 
-[node name="PickupableIntrotoElectronics" parent="Pickups" instance=ExtResource("7_yqi8i")]
+[node name="PickupableBookIntrotoElectronics" parent="Pickups" instance=ExtResource("7_yqi8i")]
 position = Vector2(299, 35)
 item = ExtResource("5_2xm0q")
 
@@ -3290,6 +3297,34 @@ item = ExtResource("6_egsmq")
 [node name="PickupableBox" parent="Pickups" instance=ExtResource("7_yqi8i")]
 position = Vector2(321, 103)
 item = ExtResource("8_2t3ps")
+
+[node name="PickupableCase" parent="Pickups" instance=ExtResource("7_yqi8i")]
+position = Vector2(418, 119)
+item = ExtResource("9_rgv67")
+
+[node name="PickupableDoor" parent="Pickups" instance=ExtResource("7_yqi8i")]
+position = Vector2(380, 154)
+item = ExtResource("10_yx4nf")
+
+[node name="PickupableEggs" parent="Pickups" instance=ExtResource("7_yqi8i")]
+position = Vector2(418, 155)
+item = ExtResource("11_vwl1a")
+
+[node name="PickupableHeater" parent="Pickups" instance=ExtResource("7_yqi8i")]
+position = Vector2(364, 88)
+item = ExtResource("12_4n0f7")
+
+[node name="PickupableTimer" parent="Pickups" instance=ExtResource("7_yqi8i")]
+position = Vector2(274, 127)
+item = ExtResource("13_g4pdu")
+
+[node name="PickupableBookFastenersAndEnclosures" parent="Pickups" instance=ExtResource("7_yqi8i")]
+position = Vector2(378, 112)
+item = ExtResource("14_d035u")
+
+[node name="PickupableBookHatchingForDummies" parent="Pickups" instance=ExtResource("7_yqi8i")]
+position = Vector2(333, 133)
+item = ExtResource("15_adyup")
 
 [node name="Player" parent="." instance=ExtResource("2_mndck")]
 position = Vector2(39, 79)
