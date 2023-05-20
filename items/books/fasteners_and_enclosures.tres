@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemBook" load_steps=4 format=3 uid="uid://bxejkvlvkh3la"]
+
+[ext_resource type="Script" path="res://items/books/item_book.gd" id="1_5dxpr"]
+[ext_resource type="Texture2D" uid="uid://c5eqyvuonqoai" path="res://assets/temperary/Overworld.png" id="2_jg1ui"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_31rhc"]
+atlas = ExtResource("2_jg1ui")
+region = Rect2(368, 328, 16, 16)
+
+[resource]
+script = ExtResource("1_5dxpr")
+name = "Fasteners and Enclosures"
+texture = SubResource("AtlasTexture_31rhc")

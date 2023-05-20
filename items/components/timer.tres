@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="ItemComponent" load_steps=6 format=3 uid="uid://cqpncu5f655fq"]
+
+[ext_resource type="Resource" uid="uid://crd4xbyqu1i1f" path="res://items/books/hatching_for_dummies.tres" id="1_kfr8q"]
+[ext_resource type="Script" path="res://items/components/item_component.gd" id="2_hpdt4"]
+[ext_resource type="AudioStream" uid="uid://ch160qvxc5sdd" path="res://assets/Collection_HatchingForDummies_Timer.ogg" id="3_oklwn"]
+[ext_resource type="Texture2D" uid="uid://c5eqyvuonqoai" path="res://assets/temperary/Overworld.png" id="4_yhogi"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_57mfu"]
+atlas = ExtResource("4_yhogi")
+region = Rect2(432, 320, 16, 24)
+
+[resource]
+script = ExtResource("2_hpdt4")
+identified_by = ExtResource("1_kfr8q")
+unidentified_name = "Noisy Egg"
+name = "Timer"
+texture = SubResource("AtlasTexture_57mfu")
+sound_on_pickup = ExtResource("3_oklwn")
