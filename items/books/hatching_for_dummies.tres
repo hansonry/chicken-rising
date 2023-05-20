@@ -1,13 +1,11 @@
 [gd_resource type="Resource" script_class="ItemBook" load_steps=4 format=3 uid="uid://crd4xbyqu1i1f"]
 
 [ext_resource type="Script" path="res://items/books/item_book.gd" id="1_wn8px"]
-[ext_resource type="Texture2D" uid="uid://c5eqyvuonqoai" path="res://assets/temperary/Overworld.png" id="2_fjx0c"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_31rhc"]
-atlas = ExtResource("2_fjx0c")
-region = Rect2(368, 328, 16, 16)
+[ext_resource type="AudioStream" uid="uid://c18errxhjlpsy" path="res://assets/Collection_Book.ogg" id="2_nrf2p"]
+[ext_resource type="Texture2D" uid="uid://yeehq0rw2jt8" path="res://assets/items/Book3.png" id="3_t7qrl"]
 
 [resource]
 script = ExtResource("1_wn8px")
 name = "Hatching for Dummies"
-texture = SubResource("AtlasTexture_31rhc")
+texture = ExtResource("3_t7qrl")
+sound_on_pickup = ExtResource("2_nrf2p")
