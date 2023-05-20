@@ -25,8 +25,6 @@ func _input(event):
 		if not is_in_use:
 			is_in_use = true
 			$AnimationPlayer.play("Flip_Open_Side")
-			print("box on!")
 		else:
 			is_in_use = false
 			$AnimationPlayer.play_backwards("Flip_Open_Side")
-			print("box off!")

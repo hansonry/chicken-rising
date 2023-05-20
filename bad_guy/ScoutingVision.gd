@@ -34,7 +34,7 @@ func _physics_process(delta):
 		if collider is Player: 
 			scout_alert.emit(get_collision_point())
 		if collider is StealthBox:
-			print("Stealth box detected")
+			pass # 
 	_move_player_scanner(delta)
 
 
