@@ -19,6 +19,7 @@ region = Rect2(416, 320, 16, 24)
 [resource]
 script = ExtResource("2_1t26i")
 identified_by = ExtResource("1_ltww7")
+unidentified_name = "Green Chip"
 name = "Circuit Board"
 texture = SubResource("AtlasTexture_ienxu")
 sound_on_pickup = SubResource("AudioStreamOggVorbis_d5fhk")

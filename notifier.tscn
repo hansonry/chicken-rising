@@ -1,0 +1,80 @@
+[gd_scene load_steps=5 format=3 uid="uid://cdwhhdrglh2gg"]
+
+[ext_resource type="Script" path="res://notifier.gd" id="1_wssn6"]
+
+[sub_resource type="Animation" id="Animation_awo6g"]
+resource_name = "ShowNotification"
+length = 0.5
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mover:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, -50, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+
+[sub_resource type="Animation" id="Animation_uvwif"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mover:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_d7a32"]
+_data = {
+"RESET": SubResource("Animation_uvwif"),
+"ShowNotification": SubResource("Animation_awo6g")
+}
+
+[node name="Notifier" type="Node2D"]
+script = ExtResource("1_wssn6")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_d7a32")
+}
+
+[node name="Mover" type="Node2D" parent="."]
+
+[node name="Control" type="Control" parent="Mover"]
+layout_mode = 3
+anchors_preset = 0
+size_flags_horizontal = 6
+size_flags_vertical = 6
+
+[node name="BoxContainer" type="BoxContainer" parent="Mover/Control"]
+layout_mode = 2
+offset_right = 82.0
+offset_bottom = 26.0
+
+[node name="Text" type="Label" parent="Mover/Control/BoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Testy Test"
+
+[node name="TextureRect" type="TextureRect" parent="Mover/Control/BoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+stretch_mode = 4
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="resized" from="Mover/Control/BoxContainer" to="." method="_on_box_container_resized"]
+[connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

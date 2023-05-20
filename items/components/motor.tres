@@ -12,6 +12,7 @@ region = Rect2(448, 320, 16, 24)
 [resource]
 script = ExtResource("2_mvmgn")
 identified_by = ExtResource("1_w4et2")
+unidentified_name = "Grey Cylinder"
 name = "Motor"
 texture = SubResource("AtlasTexture_77rad")
 sound_on_pickup = ExtResource("3_qrpqw")
