@@ -4,6 +4,7 @@ class_name ScoutingVision
 
 @onready var parent = get_parent() as Bad_Guy
 @onready var DEBUG := parent.DEBUG as bool
+const PLAYER_COLLISION_LAYER:int = 2
 
 signal scout_alert
 
@@ -30,13 +31,15 @@ func _process(delta):
 
 func _physics_process(delta):
 	if is_colliding():
-		var collider : CollisionObject2D = get_collider()
-		#if collider is Player: 
-		#	scout_alert.emit(get_collision_point())
+		if _is_player(get_collider()): 
+			scout_alert.emit(get_collision_point())
 		#if collider is StealthBox:
 	#		pass # 
 	_move_player_scanner(delta)
 
+
+func _is_player(collider: CollisionObject2D):
+	return collider.collision_layer == PLAYER_COLLISION_LAYER
 
 func _move_player_scanner(delta):
 	#rotate raycast to scan direction
