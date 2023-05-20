@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://dl8l21aehf82h"]
+
+[ext_resource type="Script" path="res://main_menu.gd" id="1_8wfi1"]
+[ext_resource type="Texture2D" uid="uid://cwx4fw7tafv1g" path="res://assets/temperary/main_menu.png" id="1_wsh4a"]
+
+[node name="MainMenu" type="Node2D"]
+script = ExtResource("1_8wfi1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_wsh4a")
+centered = false

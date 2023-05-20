@@ -9,7 +9,7 @@ var camera_destination: Vector2 = Vector2.ZERO
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	Inventory.game_ready()
 
 func _compute_camera_location(pos: Vector2) -> Vector2:
 	var frame : Vector2

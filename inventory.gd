@@ -2,11 +2,14 @@ extends Node
 
 var items := []
 
-@onready var notifier: Notifier = get_node("/root/Node2D/Camera2D/Notifier")
+var notifier: Notifier = null
 @onready var stealth_box_scene : Resource = load ("res://items/stealth_box/cardboard_box.tscn")
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
+
+func game_ready():
+	notifier = get_node("/root/Node2D/Camera2D/Notifier")
 
 func _component_identified(component: ItemComponent, book: ItemBook):
 	print("Identifed! " + component.name)
