@@ -1,7 +1,7 @@
 extends Area2D
 class_name StealthBox
 
-var player : Player
+#var player : Player
 var is_in_use = false
 
 
@@ -17,7 +17,7 @@ func _process(delta):
 	pass
 
 func _enter_tree():
-	player = get_parent();
+#	player = get_parent();
 	
 	
 func _input(event):

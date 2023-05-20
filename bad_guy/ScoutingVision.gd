@@ -31,10 +31,10 @@ func _process(delta):
 func _physics_process(delta):
 	if is_colliding():
 		var collider : CollisionObject2D = get_collider()
-		if collider is Player: 
-			scout_alert.emit(get_collision_point())
-		if collider is StealthBox:
-			pass # 
+		#if collider is Player: 
+		#	scout_alert.emit(get_collision_point())
+		#if collider is StealthBox:
+	#		pass # 
 	_move_player_scanner(delta)
 
 
