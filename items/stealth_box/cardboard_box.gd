@@ -16,7 +16,6 @@ func _process(delta):
 
 
 func _input(event):
-	print('test')
 	if event.is_action_pressed("Box"):
 		if not is_in_use:
 			is_in_use = true

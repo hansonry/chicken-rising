@@ -1,18 +1,14 @@
-[gd_resource type="Resource" script_class="ItemComponent" load_steps=6 format=3 uid="uid://bgq8ijijdd0td"]
+[gd_resource type="Resource" script_class="ItemComponent" load_steps=5 format=3 uid="uid://bgq8ijijdd0td"]
 
 [ext_resource type="Resource" uid="uid://bxejkvlvkh3la" path="res://items/books/fasteners_and_enclosures.tres" id="1_8b6lk"]
 [ext_resource type="Script" path="res://items/components/item_component.gd" id="2_mxsj0"]
-[ext_resource type="AudioStream" uid="uid://bsbdnfegud2p" path="res://assets/Collection__IntroToElectronics_Wires.ogg" id="3_t5nd7"]
-[ext_resource type="Texture2D" uid="uid://c5eqyvuonqoai" path="res://assets/temperary/Overworld.png" id="4_jsqgp"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_57mfu"]
-atlas = ExtResource("4_jsqgp")
-region = Rect2(432, 320, 16, 24)
+[ext_resource type="AudioStream" uid="uid://c86em1jk4ubml" path="res://assets/Collection_FastenersEnclosures_Case.ogg" id="3_a0r2h"]
+[ext_resource type="Texture2D" uid="uid://cr0mu2d48xnks" path="res://assets/items/case.png" id="4_88egr"]
 
 [resource]
 script = ExtResource("2_mxsj0")
 identified_by = ExtResource("1_8b6lk")
 unidentified_name = "Big Box"
 name = "Case"
-texture = SubResource("AtlasTexture_57mfu")
-sound_on_pickup = ExtResource("3_t5nd7")
+texture = ExtResource("4_88egr")
+sound_on_pickup = ExtResource("3_a0r2h")
