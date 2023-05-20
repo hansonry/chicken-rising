@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="IncubatorRequirements" load_steps=10 format=3 uid="uid://deb54p6am6e1y"]
+
+[ext_resource type="Script" path="res://items/incubator_requirements.gd" id="1_dx5ot"]
+[ext_resource type="Resource" uid="uid://bgq8ijijdd0td" path="res://items/components/case.tres" id="1_u1j0x"]
+[ext_resource type="Resource" uid="uid://ulfmu61pgmf6" path="res://items/components/circuit_board.tres" id="2_x86ln"]
+[ext_resource type="Resource" uid="uid://dktimexmr63w4" path="res://items/components/door.tres" id="3_whgc0"]
+[ext_resource type="Resource" uid="uid://d1s5b2ooxkplf" path="res://items/components/eggs.tres" id="4_migcb"]
+[ext_resource type="Resource" uid="uid://co1kc36dlewc8" path="res://items/components/heater.tres" id="5_6gbd8"]
+[ext_resource type="Resource" uid="uid://ih3srbdtg21h" path="res://items/components/motor.tres" id="6_sy4wi"]
+[ext_resource type="Resource" uid="uid://cqpncu5f655fq" path="res://items/components/timer.tres" id="7_uciex"]
+[ext_resource type="Resource" uid="uid://b1d56m8bs38c7" path="res://items/components/wires.tres" id="8_8obwd"]
+
+[resource]
+script = ExtResource("1_dx5ot")
+components = Array[Resource("res://items/components/item_component.gd")]([ExtResource("1_u1j0x"), ExtResource("2_x86ln"), ExtResource("3_whgc0"), ExtResource("4_migcb"), ExtResource("5_6gbd8"), ExtResource("6_sy4wi"), ExtResource("7_uciex"), ExtResource("8_8obwd")])

@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://dmc6euwl6cqrk"]
+
+[ext_resource type="Script" path="res://incubator.gd" id="1_t3kkh"]
+[ext_resource type="Texture2D" uid="uid://c5eqyvuonqoai" path="res://assets/temperary/Overworld.png" id="2_wj7qf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yfcmd"]
+size = Vector2(16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cirlv"]
+atlas = ExtResource("2_wj7qf")
+region = Rect2(370, 16, 16, 16)
+
+[node name="Incubator" type="Area2D"]
+collision_mask = 2
+script = ExtResource("1_t3kkh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_yfcmd")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_cirlv")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
