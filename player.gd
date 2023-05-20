@@ -2,7 +2,7 @@ extends CharacterBody2D
 class_name Player
 var last_direction: String = "Right"
 
-const SPEED = 100.0
+@export var SPEED = 100.0
 
 signal player_life_changed
 
