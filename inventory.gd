@@ -3,7 +3,7 @@ extends Node
 var items := []
 
 @onready var notifier: Notifier = get_node("/root/Node2D/Camera2D/Notifier")
-
+@onready var stealth_box_scene : Resource = load ("res://items/stealth_box/cardboard_box.tscn")
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -42,6 +42,18 @@ func _notify_component_got(component: ItemComponent):
 	notification.sound = null
 	notifier.add_notification(notification)
 
+func _notify_box_got(component: ItemEquipment):
+	var notification := Notification.new()
+	notification.text = "Got " + component.name
+	notification.image = component.texture
+	notification.sound = null
+	notifier.add_notification(notification)
+
+func _add_box_to_player():
+	get_tree().current_scene.find_child("Player").add_child( stealth_box_scene.instantiate() )
+
+
+
 func add_item(item: Item):
 	items.append(item)
 	if item is ItemBook:
@@ -50,7 +62,10 @@ func add_item(item: Item):
 	elif item is ItemComponent:
 		_notify_component_got(item)
 		_identify_component(item)
-
+	elif item is ItemEquipment:
+		if item.name == "box":
+			_add_box_to_player()
+			_notify_box_got(item)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass

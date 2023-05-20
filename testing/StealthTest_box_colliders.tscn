@@ -1,55 +1,44 @@
-[gd_scene load_steps=6 format=3 uid="uid://cwmypr37268wn"]
+[gd_scene load_steps=5 format=3 uid="uid://cwmypr37268wn"]
 
-[ext_resource type="Script" path="res://testing/test_box.gd" id="1_esnvh"]
 [ext_resource type="Texture2D" uid="uid://c3c2m4k5dli7b" path="res://bad_guy/baddie_temp_II.png" id="2_4hvie"]
-[ext_resource type="Texture2D" uid="uid://c1jiuvuq28njt" path="res://testing/brick.png" id="2_jxgmv"]
 [ext_resource type="PackedScene" uid="uid://bbatgl7nspoa0" path="res://player.tscn" id="3_cdpfq"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_35ca1"]
-size = Vector2(6, 20)
+[ext_resource type="Script" path="res://testing/POV_Test.gd" id="3_vqm4m"]
+[ext_resource type="PackedScene" uid="uid://dxyeaxe3iakde" path="res://items/stealth_box/cardboard_box.tscn" id="4_4uuqa"]
 
 [node name="Node2D" type="Node2D"]
-position = Vector2(203, 319)
-scale = Vector2(10, 10)
-
-[node name="Area2D" type="Area2D" parent="."]
-script = ExtResource("1_esnvh")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(16, 0)
-shape = SubResource("RectangleShape2D_35ca1")
-
-[node name="Sprite2D" type="Sprite2D" parent="Area2D"]
-position = Vector2(15.9995, 6.40015)
-scale = Vector2(0.00848228, 0.00853292)
-texture = ExtResource("2_jxgmv")
-region_enabled = true
-region_rect = Rect2(40.0074, 40.76, 789.88, 786.083)
-
-[node name="Sprite2D2" type="Sprite2D" parent="Area2D"]
-position = Vector2(15.7, 0)
-scale = Vector2(0.00848228, 0.00853292)
-texture = ExtResource("2_jxgmv")
-region_enabled = true
-region_rect = Rect2(40.0074, 40.76, 789.88, 786.083)
-
-[node name="Sprite2D3" type="Sprite2D" parent="Area2D"]
-position = Vector2(15.8999, -6.7998)
-scale = Vector2(0.00848228, 0.00853292)
-texture = ExtResource("2_jxgmv")
-region_enabled = true
-region_rect = Rect2(40.0074, 40.76, 789.88, 786.083)
+position = Vector2(34, 84)
+scale = Vector2(3.04438, 3.43486)
 
 [node name="Node2D" type="Node2D" parent="."]
 
 [node name="RayCast2D" type="RayCast2D" parent="Node2D"]
-scale = Vector2(1, 1)
 target_position = Vector2(112, 0)
+collision_mask = 19
 collide_with_areas = true
+script = ExtResource("3_vqm4m")
 
 [node name="Sprite2D" type="Sprite2D" parent="Node2D"]
 position = Vector2(-1.90735e-06, 0.199997)
 texture = ExtResource("2_4hvie")
 
+[node name="AlertInd" type="Label" parent="Node2D"]
+visible = false
+offset_left = -2.95626
+offset_top = -27.0754
+offset_right = 37.0437
+offset_bottom = -1.07537
+text = "!"
+
+[node name="Clueless" type="Label" parent="Node2D"]
+visible = false
+offset_left = -4.27016
+offset_top = -26.4931
+offset_right = 35.7298
+offset_bottom = -0.493107
+text = "?"
+
 [node name="Player" parent="." instance=ExtResource("3_cdpfq")]
 position = Vector2(37.5, 1.09999)
+
+[node name="CardboardBox" parent="Player" instance=ExtResource("4_4uuqa")]
+scale = Vector2(1, 1)
