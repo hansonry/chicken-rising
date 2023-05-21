@@ -3608,7 +3608,6 @@ offset_bottom = 40.0
 script = ExtResource("5_ig0b5")
 
 [node name="GameOver" parent="Camera2D/Life" instance=ExtResource("20_ewxlg")]
-position = Vector2(-67, 114)
 
 [node name="Health" type="ProgressBar" parent="Camera2D/Life"]
 layout_mode = 0
