@@ -3652,7 +3652,7 @@ autostart = true
 [node name="Enemies" type="Node2D" parent="."]
 
 [node name="BadGuy" parent="Enemies" instance=ExtResource("4_in4qt")]
-position = Vector2(89, 86)
+position = Vector2(372, 513)
 scale = Vector2(0.95648, 1)
 
 [node name="PatrolingBadGuy_1" parent="Enemies" node_paths=PackedStringArray("path") instance=ExtResource("11_pfsdc")]
@@ -3671,6 +3671,14 @@ rotation = -0.0120476
 [node name="DEBUG_MARKER" type="Sprite2D" parent="Enemies/Patrol_1/PathFollow2D"]
 visible = false
 texture = ExtResource("12_flte3")
+
+[node name="BadGuy2" parent="Enemies" instance=ExtResource("4_in4qt")]
+position = Vector2(357, 263)
+scale = Vector2(0.95648, 1)
+
+[node name="BadGuy3" parent="Enemies" instance=ExtResource("4_in4qt")]
+position = Vector2(-46, 515)
+scale = Vector2(0.95648, 1)
 
 [connection signal="win_game" from="Incubator" to="Camera2D/Life" method="_on_incubator_win_game"]
 [connection signal="player_life_changed" from="Player" to="Camera2D/Life" method="_on_player_player_life_changed"]
