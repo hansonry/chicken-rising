@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://cvrp2utnihhdy"]
+[gd_scene load_steps=30 format=3 uid="uid://cvrp2utnihhdy"]
 
 [ext_resource type="Texture2D" uid="uid://c5eqyvuonqoai" path="res://assets/temperary/Overworld.png" id="1_avw08"]
 [ext_resource type="Script" path="res://start.gd" id="1_nk06j"]
@@ -24,6 +24,7 @@
 [ext_resource type="Resource" uid="uid://bxejkvlvkh3la" path="res://items/books/fasteners_and_enclosures.tres" id="14_d035u"]
 [ext_resource type="Resource" uid="uid://crd4xbyqu1i1f" path="res://items/books/hatching_for_dummies.tres" id="15_adyup"]
 [ext_resource type="PackedScene" uid="uid://dxr4ge0quxdb3" path="res://game_over.tscn" id="20_ewxlg"]
+[ext_resource type="PackedScene" uid="uid://bbcx2f6f8ibio" path="res://you_win.tscn" id="21_3rd3e"]
 [ext_resource type="Script" path="res://TheCountDown.gd" id="22_g4xtp"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qy2ta"]
@@ -3602,12 +3603,18 @@ anchor_mode = 0
 
 [node name="Life" type="Control" parent="Camera2D"]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("5_ig0b5")
 
+[node name="YouWin" parent="Camera2D/Life" instance=ExtResource("21_3rd3e")]
+metadata/_edit_use_anchors_ = true
+
 [node name="GameOver" parent="Camera2D/Life" instance=ExtResource("20_ewxlg")]
+scale = Vector2(16.32, 5.76)
 
 [node name="Health" type="ProgressBar" parent="Camera2D/Life"]
 layout_mode = 0
@@ -3665,6 +3672,7 @@ rotation = -0.0120476
 visible = false
 texture = ExtResource("12_flte3")
 
+[connection signal="win_game" from="Incubator" to="Camera2D/Life" method="_on_incubator_win_game"]
 [connection signal="player_life_changed" from="Player" to="Camera2D/Life" method="_on_player_player_life_changed"]
 [connection signal="timeout" from="Camera2D/Life/RespawnTimer" to="Camera2D/Life" method="_on_respawn_timer_timeout"]
 [connection signal="timeout" from="Camera2D/TheCountDown/CountDownTimer" to="Player" method="_on_count_down_timer_timeout"]
