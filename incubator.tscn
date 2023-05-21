@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dmc6euwl6cqrk"]
+[gd_scene load_steps=10 format=3 uid="uid://dmc6euwl6cqrk"]
 
 [ext_resource type="Script" path="res://incubator.gd" id="1_t3kkh"]
 [ext_resource type="Texture2D" uid="uid://c5eqyvuonqoai" path="res://assets/temperary/Overworld.png" id="2_wj7qf"]
@@ -12,6 +12,62 @@ size = Vector2(16, 16)
 atlas = ExtResource("2_wj7qf")
 region = Rect2(370, 16, 16, 16)
 
+[sub_resource type="Animation" id="Animation_8tq2c"]
+resource_name = "Build"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Incubator:scale:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1e-05, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Incubator:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, -40, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+
+[sub_resource type="Animation" id="Animation_0lhal"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Incubator:scale:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1e-05, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Incubator:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-40, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_crjgj"]
+_data = {
+"Build": SubResource("Animation_8tq2c"),
+"RESET": SubResource("Animation_0lhal")
+}
+
 [node name="Incubator" type="Area2D"]
 collision_mask = 2
 script = ExtResource("1_t3kkh")
@@ -24,10 +80,16 @@ texture = SubResource("AtlasTexture_cirlv")
 
 [node name="Incubator" type="Sprite2D" parent="."]
 position = Vector2(0, -40)
+scale = Vector2(1, 1e-05)
 texture = ExtResource("3_6x4kn")
 
 [node name="BuildingSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_e0udj")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_crjgj")
+}
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="finished" from="BuildingSound" to="." method="_on_building_sound_finished"]
