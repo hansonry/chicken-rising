@@ -20,5 +20,6 @@ func _is_dead(player_hearts:int):
 
 
 func _on_incubator_win_game(win):
+	print("win signal received")
 	$YouWin/AnimationPlayer.play("Win")
 	pass # Replace with function body.
