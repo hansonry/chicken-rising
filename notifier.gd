@@ -61,7 +61,8 @@ func _on_animation_player_animation_finished(anim_name):
 		_complete_notification()
 
 func _on_box_container_resized():
-	_mover.position.x = 300 - $Mover/Control/BoxContainer.get_size().x
+	if _mover != null:
+		_mover.position.x = 300 - $Mover/Control/BoxContainer.get_size().x
 
 
 func _on_audio_stream_player_finished():
