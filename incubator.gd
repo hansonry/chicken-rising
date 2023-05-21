@@ -8,18 +8,24 @@ signal win_game(win : bool)
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$Incubator.visible = false
+	$CPUParticles2D.visible = false
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if $AnimationPlayer.is_playing():
 		$Incubator.position.x = _rng.randf_range(-5, 5);
+	if not _started_build and Inventory.can_build_incubator():
+		$CPUParticles2D.visible = true
 
 func _start_build_process():
 	_started_build = true
+	$CPUParticles2D.visible = false
 	$AnimationPlayer.play("Build", -1, 1 / $BuildingSound.stream.get_length() )
 	$Incubator.visible = true	
 	$BuildingSound.play()
+
+
 
 func _attempt_to_build():
 	if Inventory.can_build_incubator() and not _started_build:
