@@ -1,0 +1,103 @@
+[gd_scene load_steps=6 format=3 uid="uid://cvhyynr7mt6nl"]
+
+[ext_resource type="FontFile" uid="uid://cxy6s22b7w7mc" path="res://assets/DripOctober-vm0JA.ttf" id="1_stbvo"]
+
+[sub_resource type="Animation" id="Animation_jer8s"]
+resource_name = "GameOver!"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../GameOverLabel:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.486275, 0, 0.0392157, 0), Color(0.486275, 0, 0.0392157, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_dt53q"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.486275, 0, 0.0392157, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../GameOverLabel:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sp4sk"]
+_data = {
+"GameOver!": SubResource("Animation_jer8s"),
+"RESET": SubResource("Animation_dt53q")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_ogant"]
+font = ExtResource("1_stbvo")
+font_size = 36
+font_color = Color(1, 0.486275, 0.419608, 1)
+
+[node name="GameOver" type="Node2D"]
+
+[node name="BloodScreen" type="ColorRect" parent="."]
+offset_left = -5.0
+offset_top = 343.0
+offset_right = 35.0
+offset_bottom = 383.0
+scale = Vector2(14.5052, -8.6483)
+color = Color(0.486275, 0, 0.0392157, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../BloodScreen")
+libraries = {
+"": SubResource("AnimationLibrary_sp4sk")
+}
+
+[node name="GameOverLabel" type="Label" parent="."]
+visible = false
+z_index = 1001
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 17.0
+offset_top = 54.0
+offset_right = 220.0
+offset_bottom = 95.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+text = "Game Over!"
+label_settings = SubResource("LabelSettings_ogant")

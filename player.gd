@@ -24,6 +24,8 @@ func _physics_process(delta):
 	command.x = Input.get_axis("Left", "Right")
 	command.y = Input.get_axis("Up", "Down")
 	command = command.normalized()
+	if(health == 0):
+		command = Vector2.ZERO # can't move if you're dead
 	if command.x:
 		moving = true
 		velocity.x = command.x * SPEED
@@ -81,3 +83,9 @@ func _on_hurt_box_area_entered(area : Area2D):
 	var recoilDir = Vector2( (global_position.x - area.global_position.x ) , (position.y-area.global_position.x))
 	cause_flinch( 0.6 , recoilDir)
 
+
+
+func _on_count_down_timer_timeout():
+	health = 0
+	emit_signal("player_life_changed", health)
+	pass # Replace with function body.
