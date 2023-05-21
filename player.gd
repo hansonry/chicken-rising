@@ -24,6 +24,8 @@ func _physics_process(delta):
 	command.x = Input.get_axis("Left", "Right")
 	command.y = Input.get_axis("Up", "Down")
 	command = command.normalized()
+	if(health == 0):
+		command = Vector2.ZERO # can't move if you're dead
 	if command.x:
 		moving = true
 		velocity.x = command.x * SPEED
