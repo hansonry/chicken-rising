@@ -48,16 +48,14 @@ libraries = {
 
 [node name="Mover" type="Node2D" parent="."]
 
-[node name="Control" type="Control" parent="Mover"]
-layout_mode = 3
-anchors_preset = 0
-size_flags_horizontal = 6
-size_flags_vertical = 6
+[node name="Control" type="PanelContainer" parent="Mover"]
+offset_right = 98.0
+offset_bottom = 26.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
 
 [node name="BoxContainer" type="BoxContainer" parent="Mover/Control"]
 layout_mode = 2
-offset_right = 82.0
-offset_bottom = 26.0
 
 [node name="Text" type="Label" parent="Mover/Control/BoxContainer"]
 layout_mode = 2
