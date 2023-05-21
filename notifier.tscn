@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://cdwhhdrglh2gg"]
+[gd_scene load_steps=6 format=3 uid="uid://cdwhhdrglh2gg"]
 
 [ext_resource type="Script" path="res://notifier.gd" id="1_wssn6"]
+[ext_resource type="Texture2D" uid="uid://dgqhy266gpenm" path="res://assets/incubator.png" id="2_fwpo5"]
 
 [sub_resource type="Animation" id="Animation_uvwif"]
 length = 0.001
@@ -64,9 +65,12 @@ size_flags_horizontal = 0
 text = "Testy Test"
 
 [node name="TextureRect" type="TextureRect" parent="Mover/Control/BoxContainer"]
+custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+texture = ExtResource("2_fwpo5")
+expand_mode = 5
 stretch_mode = 4
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
