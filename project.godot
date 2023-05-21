@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 Direction="*res://Direction.gd"
 Inventory="*res://inventory.gd"
+Game_Over="*res://game_over.gd"
 
 [display]
 
