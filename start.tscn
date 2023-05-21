@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://cvrp2utnihhdy"]
+[gd_scene load_steps=27 format=3 uid="uid://cvrp2utnihhdy"]
 
 [ext_resource type="Script" path="res://start.gd" id="1_nk06j"]
 [ext_resource type="PackedScene" uid="uid://bbatgl7nspoa0" path="res://player.tscn" id="2_mndck"]
@@ -24,6 +24,7 @@
 [ext_resource type="Resource" uid="uid://bxejkvlvkh3la" path="res://items/books/fasteners_and_enclosures.tres" id="14_d035u"]
 [ext_resource type="Resource" uid="uid://crd4xbyqu1i1f" path="res://items/books/hatching_for_dummies.tres" id="15_adyup"]
 [ext_resource type="PackedScene" uid="uid://cvhyynr7mt6nl" path="res://game_over.tscn" id="20_ewxlg"]
+[ext_resource type="Script" path="res://TheCountDown.gd" id="22_g4xtp"]
 
 [sub_resource type="Curve2D" id="Curve2D_sr576"]
 _data = {
@@ -128,6 +129,22 @@ one_shot = true
 [node name="Notifier" parent="Camera2D" instance=ExtResource("12_qeci5")]
 position = Vector2(0, 240)
 
+[node name="TheCountDown" type="Control" parent="Camera2D"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("22_g4xtp")
+
+[node name="CountDownLabel" type="Label" parent="Camera2D/TheCountDown"]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="CountDownTimer" type="Timer" parent="Camera2D/TheCountDown"]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
 [node name="Enemies" type="Node2D" parent="."]
 
 [node name="BadGuy" parent="Enemies" instance=ExtResource("4_in4qt")]
@@ -153,3 +170,4 @@ texture = ExtResource("12_flte3")
 
 [connection signal="player_life_changed" from="Player" to="Camera2D/Life" method="_on_player_player_life_changed"]
 [connection signal="timeout" from="Camera2D/Life/RespawnTimer" to="Camera2D/Life" method="_on_respawn_timer_timeout"]
+[connection signal="timeout" from="Camera2D/TheCountDown/CountDownTimer" to="Player" method="_on_count_down_timer_timeout"]
