@@ -2,9 +2,6 @@ extends Control
 
 @onready var hp = $Health as ProgressBar
 
-
-# Called when the node enters the scene tree for the first time.
-
 func _on_player_player_life_changed(player_hearts : int):
 	if(hp == null):
 		hp = $Health
@@ -20,3 +17,8 @@ func _on_respawn_timer_timeout():
 		
 func _is_dead(player_hearts:int):
 	return player_hearts == 0
+
+
+func _on_incubator_win_game(win):
+	$YouWin/AnimationPlayer.play("Win")
+	pass # Replace with function body.

@@ -1,6 +1,7 @@
 extends Area2D
 
 var _started_build : bool = false
+signal win_game(win : bool)
 
 @onready var _rng := RandomNumberGenerator.new()
 
@@ -31,3 +32,7 @@ func _on_body_entered(body):
 func _on_building_sound_finished():
 	$Incubator.visible = true
 	$Incubator.position.x = 0
+
+
+func _on_animation_player_animation_finished(anim_name):
+	win_game.emit(true)
