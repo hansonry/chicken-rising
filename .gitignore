@@ -4,3 +4,6 @@
 # Ignore the color pallet Import
 assets/color_palette.png.import
 
+# Ignore vim tools
+*.orig
+
