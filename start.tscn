@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://cvrp2utnihhdy"]
+[gd_scene load_steps=26 format=3 uid="uid://cvrp2utnihhdy"]
 
 [ext_resource type="Script" path="res://start.gd" id="1_nk06j"]
 [ext_resource type="PackedScene" uid="uid://bbatgl7nspoa0" path="res://player.tscn" id="2_mndck"]
@@ -23,73 +23,7 @@
 [ext_resource type="Resource" uid="uid://cqpncu5f655fq" path="res://items/components/timer.tres" id="13_g4pdu"]
 [ext_resource type="Resource" uid="uid://bxejkvlvkh3la" path="res://items/books/fasteners_and_enclosures.tres" id="14_d035u"]
 [ext_resource type="Resource" uid="uid://crd4xbyqu1i1f" path="res://items/books/hatching_for_dummies.tres" id="15_adyup"]
-[ext_resource type="FontFile" uid="uid://cxy6s22b7w7mc" path="res://assets/DripOctober-vm0JA.ttf" id="21_tl0xu"]
-
-[sub_resource type="Animation" id="Animation_jer8s"]
-resource_name = "GameOver!"
-length = 2.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../GameOverLabel:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.6),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:color")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(0.486275, 0, 0.0392157, 0), Color(0.486275, 0, 0.0392157, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_dt53q"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0.486275, 0, 0.0392157, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../GameOverLabel:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_sp4sk"]
-_data = {
-"GameOver!": SubResource("Animation_jer8s"),
-"RESET": SubResource("Animation_dt53q")
-}
-
-[sub_resource type="LabelSettings" id="LabelSettings_ogant"]
-font = ExtResource("21_tl0xu")
-font_size = 36
-font_color = Color(1, 0.486275, 0.419608, 1)
+[ext_resource type="PackedScene" uid="uid://cvhyynr7mt6nl" path="res://game_over.tscn" id="20_ewxlg"]
 
 [sub_resource type="Curve2D" id="Curve2D_sr576"]
 _data = {
@@ -176,39 +110,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("5_ig0b5")
 
-[node name="GameOver" type="Node2D" parent="Camera2D/Life"]
-
-[node name="BloodScreen" type="ColorRect" parent="Camera2D/Life/GameOver"]
-offset_left = -5.0
-offset_top = 343.0
-offset_right = 35.0
-offset_bottom = 383.0
-scale = Vector2(14.5052, -8.6483)
-color = Color(0.486275, 0, 0.0392157, 0)
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Camera2D/Life/GameOver"]
-root_node = NodePath("../BloodScreen")
-libraries = {
-"": SubResource("AnimationLibrary_sp4sk")
-}
-
-[node name="GameOverLabel" type="Label" parent="Camera2D/Life/GameOver"]
-visible = false
-z_index = 1001
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 17.0
-offset_top = 54.0
-offset_right = 220.0
-offset_bottom = 95.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 4
-text = "Game Over!"
-label_settings = SubResource("LabelSettings_ogant")
+[node name="GameOver" parent="Camera2D/Life" instance=ExtResource("20_ewxlg")]
 
 [node name="Health" type="ProgressBar" parent="Camera2D/Life"]
 layout_mode = 0
